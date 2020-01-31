@@ -1,0 +1,430 @@
+/*-----------Pre-clearings-----------*/
+html {
+  box-sizing: border-box;
+}
+
+/* Padding inside of the parent item */
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* Set standards for the whole page*/
+* {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  font-style: italic;
+  vertical-align: middle;
+}
+
+img[width],
+img[height] {
+  max-width: none;
+}
+
+/*-----------font settings-----------*/
+* {
+	font-family: sans-serif;
+}
+
+h1 {
+	font-size: 8vw;
+	margin-bottom: 10px;
+}
+
+h2 {
+	font-size: 6vw;
+	margin-bottom: 10px; 
+}
+
+p {
+
+}
+
+div.text {
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+/*-----------ordering grid-----------*/
+.grid-container {
+	display: grid;
+	grid-template-columns: 1fr;
+
+	grid-template-areas: 
+	"nav"
+	"main"
+	"footer"
+}
+
+.main {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-auto-rows: minmax(100px, auto);
+
+	grid-template-areas: 
+	"intro"
+	"bread"
+	"fruit"
+	"topping"
+	"contact"
+	"maps";
+}
+
+/*-----------naming and styling grid elements-----------*/
+.nav {
+	grid-area: nav;
+	height: 70px;
+	padding: 0px 8px;
+	background-color: #DEF2CD;
+	position: fixed;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+ul {
+	list-style: none;
+	padding: 20px;
+}
+
+ul a {
+	text-decoration: none;
+	font-size: 16pt;
+	color: #000;
+}
+
+.active {
+	font-weight: bold;
+}
+
+.toggle-menu {
+	float: right;
+}
+
+.logo {
+	height: 80%;
+	width: auto;
+}
+
+.header {
+	grid-area: header;
+	display: none;
+	height: 150px;
+	background-color: grey;
+	background-image: url(img/buurtsuper.jpg);
+	background-size: cover;
+	background-position: center;
+}
+
+.intro {
+	grid-area: intro;
+	margin-top: 70px;
+}
+
+.bread {
+	grid-area: bread;
+}
+
+figure {
+	height: 150px;
+	background-color: grey;
+	background-size: cover;
+	background-position: center;
+}
+
+img {
+	width: 100%;
+}
+
+.fruit {
+	grid-area: fruit;
+}
+
+.topping {
+	grid-area: topping;
+}
+
+.contact {
+	grid-area: contact;
+	background-color: #C3DAAD;
+}
+
+.open-open {
+	display: none;
+}
+
+.maps {
+	grid-area: maps;
+	background-color: #C3DAAD;
+}
+
+.footer {
+	grid-area: footer;
+	background-color: #94A87F;
+	padding-top: 10px; 
+}
+
+.footer p {
+	font-size: 10pt;
+	text-align: center;
+	color: #fff;
+}
+
+/*-----------media queries-----------*/
+@media screen and (min-width: 420px) {
+	.header {
+		display: block;
+		margin-top: 70px;
+	}
+
+	.grid-container {
+		grid-template-areas: 
+		"header"
+		"nav"
+		"main"
+		"footer"
+	}
+
+	h1 {
+		font-size: 6vw;
+	}
+
+	h2 {
+		font-size: 4.5vw;
+	}
+
+	.intro {
+		margin-top: 0px;
+	}
+}
+
+@media screen and (min-width: 700px) {
+	div.text {
+		padding: 10px 30px;
+	}
+
+	.product div.text {
+		padding: 10px 0px;
+	}
+
+	.product {
+		padding: 0px 20px;
+	}
+
+	.open-drop {
+		display: none;
+	}
+
+	.open-open {
+		display: block;
+	}
+}
+
+@media screen and (max-width: 1040px) {
+	/* Position of the hamburger menu icon */
+  .toggle-menu {
+    display: inline-block;
+    float: right;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+
+  /* Makw the hamburger menu icon */
+  div.bar1, div.bar2, div.bar3 {
+    width: 40px;
+    height: 5px;
+    background-color: black;
+    margin: 6px 0;
+    transition: 0.4s;
+  }
+
+  /* Transform the hemburger menu icon to an exit icon */
+  .change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px); /* Make the transformation work on multiple browsers */
+    transform: rotate(-45deg) translate(-9px, 6px);
+  }
+
+  .change .bar2 {
+    opacity: 0; /* Make the middle bar transparent */
+  }
+
+  .change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px); /* Make the transformation work on multiple browsers */
+    transform: rotate(45deg) translate(-8px, -8px);
+  }
+
+  ul {
+  	position: fixed;
+  	top: 69px;
+  	right: 0;
+  	bottom: 0;
+  	left: 0;
+  	background-color: #C3DAAD;
+
+  	display: flex;
+  	flex-direction: column;
+  	align-items: center;
+
+  	transform: translateX(100%);
+  	transition: transform 350ms ease-in-out;
+  }
+
+  ul li {
+  	padding: 20px 0px;
+  }
+
+  .menu-is-open ul {
+  	transform: translateX(0);
+  }
+}
+
+@media screen and (min-width: 1040px) {
+	.main {
+		grid-template-columns: 1fr 1fr 1fr;
+
+		grid-template-areas: 
+		"intro		intro		intro"
+		"bread		fruit		topping"
+		"contact	maps		maps";
+	}
+
+	h1 {
+		font-size: 4.5vw;
+	}
+
+	h2 {
+		font-size: 3vw;
+	}
+
+	p {
+		font-size: 14pt;
+	}
+
+	ul {
+		display: flex;
+		justify-content: flex-end;
+		width: 100%;
+		padding: 0px;
+	}
+
+	ul li {
+		padding: 0px 20px;
+	}
+
+	picture {
+		padding: 0px 2px;
+	}
+
+	.maps {
+		padding: 40px;
+	}
+
+	.general-info {
+		padding-top: 30px; 
+	}
+}
+
+@media screen and (min-width: 1300px) {
+	.grid-container {
+		grid-template-columns: 250px 1fr 1fr 1fr 1fr 1fr 1fr;
+
+		grid-template-areas: 
+		"nav		header		header 		header		header		header		header"
+		"nav		main 		main 		main 		main 		main 		main"
+		"nav		footer		footer		footer		footer		footer		footer"
+	}
+
+	.nav {
+		position: fixed;
+		width: 250px;
+		height: 100%;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		display: block;
+	}
+
+	ul {
+		margin-top: 30px;
+		flex-direction: column;
+	}
+
+	ul li {
+		margin-bottom: 50px;
+	}
+
+	.header {
+		height: 250px;
+		margin-top: 0px;
+	}
+
+	.logo {
+		width: 80%;
+		max-width: 200px;
+		height: auto;
+	}
+
+	.main {
+		grid-column-start: 2;
+		grid-column-end: 8;
+	}
+
+	h1 {
+		font-size: 32pt;
+		padding: 10px 0px;
+		margin-top: 30px;
+	}
+
+	h2 {
+		font-size: 18pt;
+	}
+
+	.intro p, .product p {
+		margin-bottom: 50px;
+	}
+
+	.intro {
+		display: flex;
+		text-align: center;
+		justify-content: center;
+	}
+
+	.intro .text {
+		max-width: 1200px;
+	}
+
+	.product {
+		padding: 0px 30px;
+	}
+
+	.contact {
+		margin-left: 30px;
+	}
+
+	.maps {
+		margin-right: 30px;
+		padding-right: 50px;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
